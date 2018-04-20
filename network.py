@@ -47,14 +47,9 @@ plt.axis('off')
 plt.savefig("weighted_graph.png") # save as png
 plt.show() # display
 
-
-result1 = nx.shortest_path_length(G, "NANTES Quai de la Fosse", "NANTES Rue Flandres Dunkerque 40", "weight")
-result2 = nx.shortest_path_length(G, "NANTES Quai de la Fosse", "NANTES Rue de la Brasserie", "weight")
-
-
-# This part work only with test data
-# Must be re-implemented
-nodes = [result1, result2]
+nodes = []
+nodes.append(nx.shortest_path_length(G, "NANTES Quai de la Fosse", "NANTES Rue Flandres Dunkerque 40", "weight"))
+nodes.append(nx.shortest_path_length(G, "NANTES Quai de la Fosse", "NANTES Rue de la Brasserie", "weight"))
 
 def euclidean(a, b):
     return math.sqrt(pow(a, 2) + pow(b, 2))
@@ -63,7 +58,7 @@ world = pants.World(nodes, euclidean)
 solver = pants.Solver()
 solution = solver.solve(world)
 
+print(nodes)
 print(solution.path)
 
-print(result1)
-print(result2)
+
